@@ -48,7 +48,7 @@ body {
 <h5>Suggested Store</h5>
 <p id="store"></p>
 
-<h5>Estimated Price</h5>
+<h5>Estimated Price (after 10% discount)</h5>
 <p id="price"></p>
 
 </div>
@@ -57,29 +57,40 @@ body {
 function locateProduct() {
     var b = Number(document.getElementById("budget").value);
 
+    var brand = "";
+    var store = "";
+    var basePrice = 0;
+
     if (b <= 30000) {
-        document.getElementById("brand").innerHTML = "Acer Aspire";
-        document.getElementById("store").innerHTML = "Silicon Valley";
-        document.getElementById("price").innerHTML = "₱28,000";
+        brand = "Acer Aspire";
+        store = "Silicon Valley";
+        basePrice = 28000;
     }
 
     if (b > 30000 && b <= 50000) {
-        document.getElementById("brand").innerHTML = "Lenovo IdeaPad Gaming";
-        document.getElementById("store").innerHTML = "VillMan Computers";
-        document.getElementById("price").innerHTML = "₱45,000";
+        brand = "Lenovo IdeaPad Gaming";
+        store = "VillMan Computers";
+        basePrice = 45000;
     }
 
     if (b > 50000 && b <= 80000) {
-        document.getElementById("brand").innerHTML = "ASUS TUF Gaming";
-        document.getElementById("store").innerHTML = "VillMan Computers";
-        document.getElementById("price").innerHTML = "₱72,000";
+        brand = "ASUS TUF Gaming";
+        store = "VillMan Computers";
+        basePrice = 72000;
     }
 
     if (b > 80000) {
-        document.getElementById("brand").innerHTML = "Acer Predator";
-        document.getElementById("store").innerHTML = "Silicon Valley";
-        document.getElementById("price").innerHTML = "₱95,000+";
+        brand = "Acer Predator";
+        store = "Silicon Valley";
+        basePrice = 95000;
     }
+
+    var disc = basePrice * 0.90;
+    let finalPrice = disc.toFixed(2); // round off discount to 2 decimal places
+
+    document.getElementById("brand").innerHTML = brand;
+    document.getElementById("store").innerHTML = store;
+    document.getElementById("price").innerHTML = "₱" + finalPrice;
 }
 </script>
 
